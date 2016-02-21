@@ -87,7 +87,13 @@ $APTLIST $BUILD_APTLIST -qy
 RUN mkdir -p /tmp && \
 cd /tmp && \
 
-#start with some helper scripts
+#start with libva
+git clone git://anongit.freedesktop.org/git/libva && \
+cd libva && \
+git checkout tags/libva-1.6.2 && \
+
+#next some helper scripts
+cd /tmp && \
 git clone https://github.com/mpv-player/mpv-build.git && \
 cd mpv-build && \
 ./rebuild -j4 && \
