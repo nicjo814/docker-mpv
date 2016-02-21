@@ -101,38 +101,20 @@ libtool --finish /tmp/mpv-build/build_libs/lib && \
 cd ../ffmpeg && \
 ./configure --prefix=/usr/local --enable-pic && \
 make && \
-make install
-
-##build vapoursynth
-RUN cd /tmp && \
-#git clone https://github.com/vapoursynth/vapoursynth.git && \
-#cd vapoursynth && \
-#python3 ./bootstrap.py && \
-#./waf configure && \
-#./waf build && \
-#python3 ./setup.py build && \
-#./waf install && \
-#python3 ./setup.py install && \
-
-##build flash3kyuu_db
-#cd /tmp && \
-
-#echo "deb http://cz.archive.ubuntu.com/ubuntu wily main universe" >> /etc/apt/sources.list && \
-#apt-get update && \
-#apt-get install -qy \
-#libxkbcommon-dev libwayland-dev libva-dev libva-drm1 libva-egl1 libva-glx1 libva-wayland1 \
-#libva-x11-1 libva-tpi1 && \
+make install && \
 
 #finally build mpv
 cd /tmp && \
 git clone https://github.com/mpv-player/mpv.git && \
 cd mpv && \
 ./bootstrap.py && \
-./waf configure --enable-libmpv-shared --prefix=/usr/local
+./waf configure --enable-libmpv-shared --prefix=/usr/local && \
+./waf build && \
+./waf install && \
 
 # cleanup 
-#RUN cd / && \
-#apt-get purge --remove $BUILD_APTLIST $APTLIST -y && \
-#apt-get autoremove -y && \
-#apt-get clean -y && \
-#rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/* 
+cd / && \
+apt-get purge --remove $BUILD_APTLIST $APTLIST -y && \
+apt-get autoremove -y && \
+apt-get clean -y && \
+rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/* 
