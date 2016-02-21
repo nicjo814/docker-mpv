@@ -8,7 +8,7 @@ libfreetype6-dev libfontconfig1-dev libharfbuzz-dev libtool libasound2-dev \
 libpulse-dev libvdpau-dev libluajit-5.1-dev libsmbclient-dev libbluray-dev \
 libdvdread-dev libcdio-paranoia-dev libguess-dev libuchardet-dev librubberband-dev \
 liblcms2-dev libpulse-dev libjack-jackd2-dev libasound2-dev libdrm-dev \
-libwayland-dev libxkbcommon-dev"
+libxkbcommon-dev"
 
 # install packages
 RUN apt-get update -q && \
