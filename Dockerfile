@@ -31,7 +31,9 @@ libtool --finish /tmp/mpv-build/build_libs/lib && \
 cd ../ffmpeg && \
 ./configure --prefix=/usr/local && \
 make && \
-make install
+make install && \
+cd .. && \
+git clone https://github.com/mpv-player/mpv.git
 
 # cleanup 
 #RUN cd / && \
