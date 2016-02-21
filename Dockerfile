@@ -37,8 +37,10 @@ make && \
 make install
 
 #finally build mpv
-RUN cd /tmp
-#git clone https://github.com/mpv-player/mpv.git
+RUN cd /tmp && \
+git clone https://github.com/mpv-player/mpv.git && \
+cd mpv && \
+./bootstrap.py
 
 # cleanup 
 #RUN cd / && \
