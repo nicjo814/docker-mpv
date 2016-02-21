@@ -76,10 +76,13 @@ $APTLIST $BUILD_APTLIST -qy
 RUN mkdir -p /tmp && \
 cd /tmp && \
 
-#start with libva
+#start with libva (version in repo is to old)
 git clone git://anongit.freedesktop.org/git/libva && \
 cd libva && \
 git checkout tags/libva-1.6.2 && \
+./autogen.sh && \
+make && \
+make install && \
 
 #next some helper scripts
 cd /tmp && \
@@ -96,7 +99,7 @@ libtool --finish /tmp/mpv-build/build_libs/lib && \
 
 #build ffmpeg
 cd ../ffmpeg && \
-./configure --prefix=/usr/local && \
+./configure --prefix=/usr/local --enable-pic && \
 make && \
 make install
 
