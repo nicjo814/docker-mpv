@@ -17,22 +17,26 @@ RUN apt-get update -q && \
 apt-get install \
 $APTLIST $BUILD_APTLIST -qy
 
-# build mpv
+# build mpv and it's dependencies
 RUN mkdir -p /tmp && \
 cd /tmp && \
+#start with some helper scripts
 git clone https://github.com/mpv-player/mpv-build.git && \
 cd mpv-build && \
 ./rebuild -j4 && \
+#build libass
 cd libass && \
 ./configure -prefix /usr/local && \
 make && \
 make install && \
 libtool --finish /tmp/mpv-build/build_libs/lib && \
+#build ffmpeg
 cd ../ffmpeg && \
 ./configure --prefix=/usr/local && \
 make && \
 make install && \
 cd .. && \
+#finally build mpv
 git clone https://github.com/mpv-player/mpv.git
 
 # cleanup 
