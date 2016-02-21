@@ -88,7 +88,8 @@ RUN mkdir -p /tmp && \
 cd /tmp && \
 
 #start with some helper scripts
-git clone https://github.com/mpv-player/mpv-build.git && \3cd mpv-build && \
+git clone https://github.com/mpv-player/mpv-build.git && \
+cd mpv-build && \
 ./rebuild -j4 && \
 
 #build libass
