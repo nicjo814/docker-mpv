@@ -120,6 +120,7 @@ RUN cd /tmp && \
 #cd /tmp && \
 
 echo "deb http://cz.archive.ubuntu.com/ubuntu wily main universe" >> /etc/apt/sources.list && \
+apt-get update && \
 apt-get install -qy \
 libxkbcommon-dev libwayland-dev libva-dev libva-drm1 libva-egl1 libva-glx1 libva-wayland1 \
 libva-x11-1 libva-tpi1 && \
