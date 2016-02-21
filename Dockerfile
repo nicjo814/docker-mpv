@@ -37,7 +37,7 @@ make && \
 make install && \
 cd .. && \
 #finally build mpv
-git clone https://github.com/mpv-player/mpv.git
+#git clone https://github.com/mpv-player/mpv.git
 
 # cleanup 
 #RUN cd / && \
