@@ -26,7 +26,8 @@ cd mpv-build && \
 cd libass && \
 ./configure -prefix /usr/local && \
 make && \
-make install
+make install && \
+libtool --finish /tmp/mpv-build/build_libs/lib
 
 # cleanup 
 #RUN cd / && \
