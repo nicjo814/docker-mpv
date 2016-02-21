@@ -119,12 +119,17 @@ RUN cd /tmp && \
 ##build flash3kyuu_db
 #cd /tmp && \
 
+echo "deb http://cz.archive.ubuntu.com/ubuntu wily main universe" >> /etc/apt/sources.list && \
+apt-get install -qy \
+libxkbcommon-dev libwayland-dev libva-dev libva-drm1 libva-egl1 libva-glx1 libva-wayland1 \
+libva-x11-1 libva-tpi1 && \
 
 #finally build mpv
 cd /tmp && \
 git clone https://github.com/mpv-player/mpv.git && \
 cd mpv && \
-./bootstrap.py
+./bootstrap.py && \
+./waf configure --enable-libmpv-shared --prefix=/usr/local
 
 # cleanup 
 #RUN cd / && \
