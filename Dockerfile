@@ -20,7 +20,7 @@ $APTLIST $BUILD_APTLIST -qy
 # build mpv
 RUN mkdir -p /tmp && \
 cd /tmp && \
-git clone https://github.com/mpv-player/mpv-build.git
+git clone https://github.com/mpv-player/mpv-build.git && \
 cd mpv-build && \
 ./rebuild -j4 && \
 cd libass && \
