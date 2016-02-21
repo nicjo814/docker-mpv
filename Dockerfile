@@ -20,7 +20,7 @@ $APTLIST $BUILD_APTLIST -qy
 
 # build mpv and it's dependencies
 RUN mkdir -p /tmp && \
-cd /tmp && \
+cd /tmp
 
 ##start with some helper scripts
 #git clone https://github.com/mpv-player/mpv-build.git && \3cd mpv-build && \
