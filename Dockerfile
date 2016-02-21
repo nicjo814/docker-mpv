@@ -67,17 +67,6 @@ x11proto-scrnsaver-dev x11proto-video-dev x11proto-xext-dev \
 x11proto-xf86vidmode-dev x11proto-xinerama-dev xorg-sgml-doctools xtrans-dev \
 yasm zlib1g-dev"
 
-
-
-#python build-essential autoconf yasm libfribidi-dev \
-#libfreetype6-dev libfontconfig1-dev libharfbuzz-dev libtool libasound2-dev \
-#libpulse-dev libvdpau-dev libluajit-5.1-dev libsmbclient-dev libbluray-dev \
-#libdvdread-dev libcdio-paranoia-dev libguess-dev libuchardet-dev librubberband-dev \
-#liblcms2-dev libpulse-dev libjack-jackd2-dev libasound2-dev libdrm-dev \
-#libxkbcommon-dev automake libass-dev libsdl1.2-dev libtheora-dev libva-dev \
-#libvorbis-dev libxcb1-dev libxcb-shm0-dev libxcb-xfixes0-dev pkg-config texinfo \
-#zlib1g-dev libavutil-dev libavcodec-dev libswscale-dev python3-dev cython3"
-
 # install packages
 RUN apt-get update -q && \
 apt-get install \
