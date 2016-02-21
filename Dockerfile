@@ -70,10 +70,10 @@ yasm zlib1g-dev"
 # install packages
 RUN apt-get update -q && \
 apt-get install \
-$APTLIST $BUILD_APTLIST -qy
+$APTLIST $BUILD_APTLIST -qy && \
 
 # build mpv and it's dependencies
-RUN mkdir -p /tmp && \
+mkdir -p /tmp && \
 cd /tmp && \
 
 #start with libva (version in repo is to old)
@@ -95,7 +95,7 @@ cd libass && \
 ./configure -prefix /usr/local --with-pic && \
 make && \
 make install && \
-libtool --finish /tmp/mpv-build/build_libs/lib && \
+#libtool --finish /tmp/mpv-build/build_libs/lib && \
 
 #build ffmpeg
 cd ../ffmpeg && \
