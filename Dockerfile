@@ -92,7 +92,7 @@ cd mpv-build && \
 
 #build libass
 cd libass && \
-./configure -prefix /usr/local --enable-pic && \
+./configure -prefix /usr/local --with-pic && \
 make && \
 make install && \
 libtool --finish /tmp/mpv-build/build_libs/lib && \
