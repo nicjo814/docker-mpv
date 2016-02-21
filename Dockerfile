@@ -1,4 +1,4 @@
-FROM nicjo814/qtbase
+FROM nicjo814/docker-qtbase
 
 # specify apt packages to install
 ENV APTLIST=""
