@@ -27,7 +27,11 @@ cd libass && \
 ./configure -prefix /usr/local && \
 make && \
 make install && \
-libtool --finish /tmp/mpv-build/build_libs/lib
+libtool --finish /tmp/mpv-build/build_libs/lib && \
+cd ../ffmpeg && \
+./configure --prefix=/usr/local && \
+make && \
+make install
 
 # cleanup 
 #RUN cd / && \
