@@ -91,27 +91,25 @@ cd mpv-build && \
 ./update && \
 ./clean && \
 
-#build libass
-cd libass && \
-./configure -prefix /usr/local --with-pic && \
-#make clean && \
-make && \
-make install && \
+##build libass
+#cd libass && \
+#./configure -prefix /usr/local --with-pic && \
+#make && \
+#make install && \
 #libtool --finish /tmp/mpv-build/build_libs/lib && \
 
-#build ffmpeg
-cd ../ffmpeg && \
-./configure --prefix=/usr/local --enable-pic && \
-#make clean && \
-make && \
-make install && \
+##build ffmpeg
+#cd ../ffmpeg && \
+#./configure --prefix=/usr/local --enable-pic && \
+#make && \
+#make install && \
 
-#finally build mpv
+##finally build mpv
 cd /tmp && \
 git clone https://github.com/mpv-player/mpv.git && \
 cd mpv && \
 ./bootstrap.py && \
-./waf configure --enable-libmpv-shared --prefix=/usr/local
+#./waf configure --enable-libmpv-shared --prefix=/usr/local
 #&& \
 #./waf build && \
 #./waf install && \
