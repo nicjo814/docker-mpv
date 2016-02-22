@@ -91,11 +91,12 @@ cd mpv-build && \
 ./update && \
 ./clean && \
 
-##build libass
-#cd libass && \
-#./configure -prefix /usr/local --with-pic && \
-#make && \
-#make install && \
+#build libass
+cd libass && \
+./autogen.sh --prefix="/usr/local" --with-pic -j4 && \
+./configure --prefix="/usr/local" --with-pic && \
+make -j4 && \
+make install && \
 #libtool --finish /tmp/mpv-build/build_libs/lib && \
 
 ##build ffmpeg
