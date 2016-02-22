@@ -99,11 +99,11 @@ make -j4 && \
 make install && \
 #libtool --finish /tmp/mpv-build/build_libs/lib && \
 
-##build ffmpeg
-#cd ../ffmpeg && \
-#./configure --prefix=/usr/local --enable-pic && \
-#make && \
-#make install && \
+#build ffmpeg
+cd ../ffmpeg && \
+./configure --prefix="/usr/local" --enable-pic --enable-gpl --disable-debug --disable-doc && \
+make -j4 && \
+make install && \
 
 ##finally build mpv
 cd /tmp && \
