@@ -88,12 +88,13 @@ make install && \
 cd /tmp && \
 git clone https://github.com/mpv-player/mpv-build.git && \
 cd mpv-build && \
-./rebuild -j4 && \
+./update && \
+./clean && \
 
 #build libass
 cd libass && \
 ./configure -prefix /usr/local --with-pic && \
-make clean && \
+#make clean && \
 make && \
 make install && \
 #libtool --finish /tmp/mpv-build/build_libs/lib && \
