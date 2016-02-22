@@ -92,6 +92,7 @@ cd mpv-build && \
 
 #build libass
 cd libass && \
+make clean && \
 ./configure -prefix /usr/local --with-pic && \
 make && \
 make install && \
@@ -99,6 +100,7 @@ make install && \
 
 #build ffmpeg
 cd ../ffmpeg && \
+make clean && \
 ./configure --prefix=/usr/local --enable-pic && \
 make && \
 make install && \
@@ -109,12 +111,12 @@ git clone https://github.com/mpv-player/mpv.git && \
 cd mpv && \
 ./bootstrap.py && \
 ./waf configure --enable-libmpv-shared --prefix=/usr/local && \
-./waf build && \
-./waf install && \
+#./waf build && \
+#./waf install && \
 
 # cleanup 
-cd / && \
-apt-get purge --remove $BUILD_APTLIST $APTLIST -y && \
-apt-get autoremove -y && \
-apt-get clean -y && \
-rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/* 
+#cd / && \
+#apt-get purge --remove $BUILD_APTLIST $APTLIST -y && \
+#apt-get autoremove -y && \
+#apt-get clean -y && \
+#rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/* 
