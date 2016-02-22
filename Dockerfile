@@ -92,16 +92,16 @@ cd mpv-build && \
 
 #build libass
 cd libass && \
-make clean && \
 ./configure -prefix /usr/local --with-pic && \
+make clean && \
 make && \
 make install && \
 #libtool --finish /tmp/mpv-build/build_libs/lib && \
 
 #build ffmpeg
 cd ../ffmpeg && \
-make clean && \
 ./configure --prefix=/usr/local --enable-pic && \
+#make clean && \
 make && \
 make install && \
 
