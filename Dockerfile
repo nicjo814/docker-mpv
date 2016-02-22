@@ -135,8 +135,7 @@ cd /tmp && \
 git clone https://github.com/mpv-player/mpv.git && \
 cd mpv && \
 ./bootstrap.py && \
-./waf configure --enable-libmpv-shared --prefix=/usr/local
- && \
+./waf configure --enable-libmpv-shared --prefix=/usr/local && \
 ./waf build && \
 ./waf install && \
 
