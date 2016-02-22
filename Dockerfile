@@ -65,7 +65,7 @@ x11proto-damage-dev x11proto-dri2-dev x11proto-fixes-dev x11proto-gl-dev \
 x11proto-input-dev x11proto-kb-dev x11proto-randr-dev x11proto-render-dev \
 x11proto-scrnsaver-dev x11proto-video-dev x11proto-xext-dev \
 x11proto-xf86vidmode-dev x11proto-xinerama-dev xorg-sgml-doctools xtrans-dev \
-yasm zlib1g-dev"
+yasm zlib1g-dev libffi-dev libxml2-dev libxkbcommon-dev python3.4-dev cython3"
 
 # install packages
 RUN apt-get update -q && \
@@ -74,9 +74,35 @@ $APTLIST $BUILD_APTLIST -qy && \
 
 # build mpv and it's dependencies
 mkdir -p /tmp && \
-cd /tmp && \
 
-#start with libva (version in repo is to old)
+#start with Wayland (too old)
+cd /tmp && \
+git clone git://anongit.freedesktop.org/wayland/wayland && \
+cd wayland && \
+./autogen.sh --prefix="/usr/local" --disable-documentation && \
+make && \
+make install && \
+
+#zimg
+cd /tmp && \
+git clone https://github.com/sekrit-twc/zimg.git && \
+cd zimg && \
+./autogen.sh --prefix="/usr/local" && \
+./configure --prefix="/usr/local" && \
+make && \
+make install && \
+
+#next VapourSynth (too old)
+cd /tmp && \
+git clone https://github.com/vapoursynth/vapoursynth.git && \
+cd vapoursynth && \
+./autogen.sh --prefix="/usr/local" && \
+./configure --prefix="/usr/local" && \
+make && \
+make install && \
+
+#next libva (version in repo is too old)
+cd /tmp && \
 git clone git://anongit.freedesktop.org/git/libva && \
 cd libva && \
 git checkout tags/libva-1.6.2 && \
@@ -97,7 +123,6 @@ cd libass && \
 ./configure --prefix="/usr/local" --with-pic && \
 make -j4 && \
 make install && \
-#libtool --finish /tmp/mpv-build/build_libs/lib && \
 
 #build ffmpeg
 cd ../ffmpeg && \
@@ -105,12 +130,13 @@ cd ../ffmpeg && \
 make -j4 && \
 make install && \
 
-##finally build mpv
+#finally build mpv
 cd /tmp && \
 git clone https://github.com/mpv-player/mpv.git && \
 cd mpv && \
 ./bootstrap.py && \
-./waf configure --enable-libmpv-shared --prefix=/usr/local && \
+./waf configure --enable-libmpv-shared --prefix=/usr/local
+ && \
 ./waf build && \
 ./waf install && \
 
