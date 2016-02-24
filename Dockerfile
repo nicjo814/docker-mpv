@@ -10,7 +10,7 @@ libicu52 libjack-jackd2-0 libjpeg-turbo8 liblua5.2-0 libpulse0 libpython3.4 libr
 libsmbclient libuchardet0 libv4l-0 libvdpau1 libwayland-egl1-mesa libxcb-icccm4 \
 libxcb-image0 libxcb-keysyms1 libxcb-randr0 libxcb-render-util0 libxcb-render0 \
 libxcb-shape0 libxcb-shm0 libxcb-sync1 libxcb-xfixes0 libxcb-xkb1 libxcb1 \
-libxkbcommon-x11-0 libxkbcommon0 libgnutlsxx27"
+libxkbcommon-x11-0 libxkbcommon0 libgnutlsxx27 libmp3lame0 libopus0"
 
 ENV BUILD_APTLIST="git devscripts equivs \
 autoconf automake autotools-dev docutils-common docutils-doc \
@@ -35,10 +35,10 @@ libjs-jquery liblcms2-2 liblcms2-dev libldb1 liblircclient-dev \
 liblircclient0 libllvm3.4 libltdl-dev libltdl7 liblua5.2-dev \
 libmirclient-dev libmirclient7 libmirclientplatform-mesa libmirprotobuf-dev \
 libmirprotobuf0 libmodplug-dev libmodplug1 libmowgli-dev libmowgli2 \
-libmp3lame-dev libmp3lame0 libntdb1 libogg-dev libogg0 libopenal-data \ 
+libmp3lame-dev libntdb1 libogg-dev libogg0 libopenal-data \ 
 libopenal-dev libopenal1 libopencore-amrnb-dev libopencore-amrnb0 \
 libopencore-amrwb-dev libopencore-amrwb0 libopenjpeg-dev libopenjpeg2 \
-libopenvg1-mesa libopus-dev libopus0 liborc-0.4-0 liborc-0.4-dev \
+libopenvg1-mesa libopus-dev liborc-0.4-0 liborc-0.4-dev \
 libp11-kit-dev libpaper-utils libpaper1 libpciaccess0 libpcre3-dev \
 libpcrecpp0 libpng12-dev libprotobuf-dev libprotobuf-lite8 libprotobuf8 \
 libpthread-stubs0-dev libpulse-dev libpulse-mainloop-glib0 \
@@ -74,10 +74,14 @@ x11proto-damage-dev x11proto-dri2-dev x11proto-fixes-dev x11proto-gl-dev \
 x11proto-input-dev x11proto-kb-dev x11proto-randr-dev x11proto-render-dev \
 x11proto-scrnsaver-dev x11proto-video-dev x11proto-xext-dev \
 x11proto-xf86vidmode-dev x11proto-xinerama-dev xorg-sgml-doctools xtrans-dev \
-yasm zlib1g-dev libffi-dev libxml2-dev libxkbcommon-dev python3.4-dev cython3"
+yasm zlib1g-dev libffi-dev libxml2-dev libxkbcommon-dev python3.4-dev cython3 \
+cmake mercurial"
+
+#add repository
+RUN add-apt-repository -y ppa:george-edison55/cmake-3.x && \
 
 # install packages
-RUN apt-get update -q && \
+apt-get update -q && \
 apt-get install \
 $APTLIST $BUILD_APTLIST -qy && \
 
@@ -134,9 +138,52 @@ make -j4 && \
 make install && \
 
 #build ffmpeg
+#first x265
 cd ../ffmpeg && \
-./configure --prefix="/usr/local" --enable-pic --enable-gpl --disable-debug --disable-doc && \
---enable-gnutls make -j4 && \
+hg clone https://bitbucket.org/multicoreware/x265 && \
+cd x265/build/linux && \
+cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX="/usr/local" -DENABLE_SHARED:bool=on ../../source && \
+make && \
+make install && \
+#libfdk-aac
+cd /tmp/mpv-build/ffmpeg && \
+wget -O fdk-aac.tar.gz https://github.com/mstorsjo/fdk-aac/tarball/master && \
+tar xzvf fdk-aac.tar.gz && \
+cd mstorsjo-fdk-aac* && \
+autoreconf -fiv && \
+./configure --prefix="/usr/local" && \
+make && \
+make install && \
+make distclean && \
+#libvpx
+cd /tmp/mpv-build/ffmpeg && \
+wget http://storage.googleapis.com/downloads.webmproject.org/releases/webm/libvpx-1.5.0.tar.bz2 && \
+tar xjvf libvpx-1.5.0.tar.bz2 && \
+cd libvpx-1.5.0 && \
+./configure --prefix="/usr/local" --disable-examples --disable-unit-tests --enable-pic && \
+make && \
+make install && \
+make clean && \
+#finally ffmpeg itself
+cd /tmp/mpv-build/ffmpeg && \
+./configure --prefix="/usr/local" \
+--enable-pic \
+--enable-gpl \
+--enable-libass \
+--enable-libfdk-aac \
+--enable-libfreetype \
+--enable-libmp3lame \
+--enable-libopus \
+--enable-libtheora \
+--enable-libvorbis \
+--enable-libvpx \
+--enable-libx264 \
+--enable-libx265 \
+--enable-nonfree \
+--enable-gnutls \
+--disable-debug \
+--disable-doc && \
+make -j4 && \
 make install && \
 
 #finally build mpv
