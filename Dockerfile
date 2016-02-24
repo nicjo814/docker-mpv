@@ -6,7 +6,7 @@ libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxinerama1 \
 libxrandr2 libxrender1 libxss1 libxtst6 libxv1 libasound2 libbluray1 libcaca0 \
 libcdio13 libcdio-cdda1 libcdio-paranoia1 libdvdnav4 libdvdread4 libenca0 \
 libfontconfig1 libfreetype6 libgstreamer-plugins-base0.10-0 libguess1 libharfbuzz0b \
-libicu52 libjack0 libjpeg-turbo8 liblua5.2-0 libpulse0 libpython3.4 librubberband2 \
+libicu52 libjack-jackd2-0 libjpeg-turbo8 liblua5.2-0 libpulse0 libpython3.4 librubberband2 \
 libsmbclient libuchardet0 libv4l-0 libvdpau1 libwayland-egl1-mesa libxcb-icccm4 \
 libxcb-image0 libxcb-keysyms1 libxcb-randr0 libxcb-render-util0 libxcb-render0 \
 libxcb-shape0 libxcb-shm0 libxcb-sync1 libxcb-xfixes0 libxcb-xkb1 libxcb1 \
