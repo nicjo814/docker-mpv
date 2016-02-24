@@ -10,7 +10,7 @@ libicu52 libjack-jackd2-0 libjpeg-turbo8 liblua5.2-0 libpulse0 libpython3.4 libr
 libsmbclient libuchardet0 libv4l-0 libvdpau1 libwayland-egl1-mesa libxcb-icccm4 \
 libxcb-image0 libxcb-keysyms1 libxcb-randr0 libxcb-render-util0 libxcb-render0 \
 libxcb-shape0 libxcb-shm0 libxcb-sync1 libxcb-xfixes0 libxcb-xkb1 libxcb1 \
-libxkbcommon-x11-0 libxkbcommon0"
+libxkbcommon-x11-0 libxkbcommon0 libgnutlsxx27"
 
 ENV BUILD_APTLIST="git devscripts equivs \
 autoconf automake autotools-dev docutils-common docutils-doc \
@@ -27,7 +27,7 @@ libexpat1-dev libfftw3-double3 libflac8 libfontconfig1-dev \
 libfreetype6-dev libfribidi-dev libgbm1 libgcrypt11-dev \
 libgl1-mesa-dev libgl1-mesa-dri libglapi-mesa libglib2.0-bin \
 libglib2.0-data libglib2.0-dev libgme-dev libgme0 libgnutls-dev \
-libgnutlsxx27 libgpg-error-dev libgraphite2-3 libgsm1 libgsm1-dev \
+libgpg-error-dev libgraphite2-3 libgsm1 libgsm1-dev \
 libguess-dev libharfbuzz-dev libharfbuzz-gobject0 libharfbuzz-icu0 \
 libjack-jackd2-0 libjack-jackd2-dev libjbig0 \
 libjpeg-dev libjpeg-turbo8-dev libjpeg8 libjpeg8-dev \
@@ -136,7 +136,7 @@ make install && \
 #build ffmpeg
 cd ../ffmpeg && \
 ./configure --prefix="/usr/local" --enable-pic --enable-gpl --disable-debug --disable-doc && \
-make -j4 && \
+--enable-gnutls make -j4 && \
 make install && \
 
 #finally build mpv
