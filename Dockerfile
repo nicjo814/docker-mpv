@@ -10,7 +10,8 @@ libicu52 libjack-jackd2-0 libjpeg-turbo8 liblua5.2-0 libpulse0 libpython3.4 libr
 libsmbclient libuchardet0 libv4l-0 libvdpau1 libwayland-egl1-mesa libxcb-icccm4 \
 libxcb-image0 libxcb-keysyms1 libxcb-randr0 libxcb-render-util0 libxcb-render0 \
 libxcb-shape0 libxcb-shm0 libxcb-sync1 libxcb-xfixes0 libxcb-xkb1 libxcb1 \
-libxkbcommon-x11-0 libxkbcommon0 libgnutlsxx27 libmp3lame0 libopus0"
+libxkbcommon-x11-0 libxkbcommon0 libgnutlsxx27 libmp3lame0 libopus0 libx264-142 \
+libtheora0"
 
 ENV BUILD_APTLIST="git devscripts equivs \
 autoconf automake autotools-dev docutils-common docutils-doc \
@@ -47,7 +48,7 @@ libsamplerate0 libschroedinger-1.0-0 libschroedinger-dev \
 libsigsegv2 libslang2-dev libsmbclient-dev libsndfile1 \
 libsoxr-dev libsoxr-lsr0 libsoxr0 libspeex-dev libspeex1 libssh-4 libssh-dev \
 libssl-dev libssl-doc libtalloc2 libtasn1-6-dev libtdb1 libtevent0 \
-libtheora-dev libtheora0 libtiff5 libtinfo-dev libtool libtwolame-dev \
+libtheora-dev libtiff5 libtinfo-dev libtool libtwolame-dev \
 libtwolame0 libtxc-dxtn-s2tc0 libuchardet-dev \
 libv4l-dev libv4l2rds0 libv4lconvert0 libva-dev libva-drm1 libva-egl1 \
 libva-glx1 libva-tpi1 libva-wayland1 libva-x11-1 libva1 libvdpau-dev \
@@ -55,7 +56,7 @@ libvo-amrwbenc-dev libvo-amrwbenc0 libvorbis-dev libvorbis0a \
 libvorbisenc2 libvorbisfile3 libvpx-dev libvpx1 libwavpack-dev libwavpack1 \
 libwayland-client0 libwayland-cursor0 libwayland-dev \
 libwayland-server0 libwbclient0 libwebp5 libwebpmux1 libx11-data \
-libx11-dev libx11-doc libx11-xcb-dev libx264-142 libx264-dev \
+libx11-dev libx11-doc libx11-xcb-dev libx264-dev \
 libxau-dev libxau6 libxcb-dri2-0 libxcb-dri2-0-dev libxcb-dri3-0 \
 libxcb-dri3-dev libxcb-glx0 libxcb-glx0-dev libxcb-present-dev \
 libxcb-present0 libxcb-randr0-dev \
