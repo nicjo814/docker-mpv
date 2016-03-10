@@ -1,4 +1,4 @@
-FROM nicjo814/docker-qtbase
+FROM nicjo814/docker-qtbase:qtppa
 
 # specify apt packages to install
 ENV APTLIST="libegl1-mesa libgl1-mesa-glx libice6 libsm6 libx11-xcb1 libx11-6 \
