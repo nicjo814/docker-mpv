@@ -11,7 +11,7 @@ libsmbclient libuchardet0 libv4l-0 libvdpau1 libwayland-egl1-mesa libxcb-icccm4 
 libxcb-image0 libxcb-keysyms1 libxcb-randr0 libxcb-render-util0 libxcb-render0 \
 libxcb-shape0 libxcb-shm0 libxcb-sync1 libxcb-xfixes0 libxcb-xkb1 libxcb1 \
 libxkbcommon-x11-0 libxkbcommon0 libgnutlsxx27 libmp3lame0 libopus0 libx264-142 \
-libtheora0"
+libtheora0 wget"
 
 ENV BUILD_APTLIST="git devscripts equivs \
 autoconf automake autotools-dev docutils-common docutils-doc \
@@ -197,9 +197,9 @@ cd mpv && \
 ./waf install && \
 
 # cleanup 
-cd / && \
-apt-get purge --remove $BUILD_APTLIST -y && \
-apt-get autoremove -y && \
-apt-get install $APTLIST -qy && \
-apt-get clean -y && \
-rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/* 
+#cd / && \
+#apt-get purge --remove $BUILD_APTLIST -y && \
+#apt-get autoremove -y && \
+#apt-get install $APTLIST -qy && \
+#apt-get clean -y && \
+rm -rf /var/tmp/* /tmp/* 
